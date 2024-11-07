@@ -1,0 +1,54 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class TelaLogin {
+    public static void main(String[] args) {
+        // Criação da janela principal
+        JFrame frame = new JFrame("Tela de Login");
+        frame.setSize(300, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+
+        // Painel para adicionar os componentes
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(3, 2));  // Layout de 3 linhas e 2 colunas
+        frame.add(panel, BorderLayout.CENTER);
+
+        // Labels e campos de texto
+        JLabel labelUsuario = new JLabel("Usuário:");
+        JTextField campoUsuario = new JTextField(15);
+        JLabel labelSenha = new JLabel("Senha:");
+        JPasswordField campoSenha = new JPasswordField(15);
+
+        // Botão de login
+        JButton botaoLogin = new JButton("Login");
+
+        // Adicionando componentes ao painel
+        panel.add(labelUsuario);
+        panel.add(campoUsuario);
+        panel.add(labelSenha);
+        panel.add(campoSenha);
+        panel.add(botaoLogin);
+
+        // Função de ação para o botão de login
+        botaoLogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String usuario = campoUsuario.getText();
+                String senha = new String(campoSenha.getPassword());
+
+                // Validando os dados do login
+                if (usuario.equals("admin") && senha.equals("1234")) {
+                    JOptionPane.showMessageDialog(frame, "Login bem-sucedido!");
+                } else {
+                    JOptionPane.showMessageDialog(frame, "Usuário ou senha incorretos.");
+                }
+            }
+        });
+
+        // Definindo a visibilidade da janela
+        frame.setVisible(true);
+    }
+}
